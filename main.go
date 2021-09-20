@@ -6,6 +6,11 @@ import (
 )
 
 func main() {
+	ServeAPI()
+}
+
+//ServeAPI Initializes mux routes and serves the Events API
+func ServeAPI() {
 	handler := &eventServiceHandler{}
 	r := mux.NewRouter()
 	eventsrouter := r.PathPrefix("/events").Subrouter()
