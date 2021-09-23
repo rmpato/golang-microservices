@@ -97,5 +97,17 @@ func (eh *eventServiceHandler) allEventHandler(w http.ResponseWriter, r *http.Re
 }
 
 func (eh *eventServiceHandler) newEventHandler(w http.ResponseWriter, r *http.Request) {
-
+	event := persistence.Event{}
+	err := json.NewDecoder(r.Body).Decode(&event)
+	if err != nil {
+		w.WriteHeader(500)
+		fmt.Fprintf(w, "{error: error occured while decoding event data %s}", err)
+		return
+	}
+	id, err := eh.dbhandler.AddEvent(event)
+	if nil != err {
+		w.WriteHeader(500)
+		fmt.Fprintf(w, "{error: error occured while persisting event %d %s}", id, err)
+		return
+	}
 }
