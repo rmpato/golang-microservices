@@ -29,7 +29,7 @@ func ServeAPI(endpoint string, dbHandler persistence.DatabaseHandler) error {
 	//Creates a new Event from a POST request
 	eventsrouter.Methods("POST").Path("").HandlerFunc(handler.newEventHandler)
 
-	http.ListenAndServe(endpoint, r)
+	return http.ListenAndServe(endpoint, r)
 }
 
 //A constructor func to build the event service handler with a db handler injected
