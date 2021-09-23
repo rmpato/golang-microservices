@@ -11,7 +11,6 @@ import (
 )
 
 func main() {
-	ServeAPI()
 }
 
 //ServeAPI Initializes mux routes and serves the Events API
