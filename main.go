@@ -15,8 +15,8 @@ func main() {
 }
 
 //ServeAPI Initializes mux routes and serves the Events API
-func ServeAPI() {
-	handler := &eventServiceHandler{}
+func ServeAPI(endpoint string, dbHandler persistence.DatabaseHandler) error {
+	handler := newEventHandler(dbHandler)
 	r := mux.NewRouter()
 	eventsrouter := r.PathPrefix("/events").Subrouter()
 
@@ -29,7 +29,7 @@ func ServeAPI() {
 	//Creates a new Event from a POST request
 	eventsrouter.Methods("POST").Path("").HandlerFunc(handler.newEventHandler)
 
-	http.ListenAndServe(":8181", r)
+	http.ListenAndServe(endpoint, r)
 }
 
 //A constructor func to build the event service handler with a db handler injected
