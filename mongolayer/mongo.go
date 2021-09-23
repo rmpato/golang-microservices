@@ -28,7 +28,7 @@ func NewMongoDBLayer(connection string) (*MongoDBLayer, error) {
 	}, err
 }
 
-func (mgoLayer *MongoDBLayer) Addevent(e persistence.Event) ([]byte, error) {
+func (mgoLayer *MongoDBLayer) AddEvent(e persistence.Event) ([]byte, error) {
 	s := mgoLayer.getFreshSession()
 	defer s.Close()
 
