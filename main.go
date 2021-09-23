@@ -32,7 +32,7 @@ func ServeAPI() {
 	http.ListenAndServe(":8181", r)
 }
 
-//A costructor func to build the event service handler with a db handler injected
+//A constructor func to build the event service handler with a db handler injected
 func newEventHandler(databaseHandler persistence.DatabaseHandler) *eventServiceHandler {
 	return &eventServiceHandler{dbhandler: databaseHandler}
 }
