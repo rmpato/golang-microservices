@@ -20,3 +20,4 @@ docker run --detach --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-manag
 To open an AMQP connection, use: `amqp://localhost:5672` 
 
 To browse the management UI `http://localhost:15672`
+By default, user is `guest` as so is the password.
